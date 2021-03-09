@@ -3,16 +3,41 @@ import "./App.css"
 import Person from "./Person/Person"
 
 class App extends Component {
+  // state is a special "property" of this class component
+  state = {
+    persons: [
+      { name: "Max", age: 28 },
+      { name: "Manu", age: 29 },
+      { name: "Stephanie", age: 26 }
+    ]
+  }
+
+  // this eventHandler is a "Method" of this clas component
+  // es6 syntax
+  switchNameHandler = () => {
+    console.log("Was Clicked")
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <Person name="Max" age="28" />
-        <Person name="Manu" age="29">
+        <button onClick={this.switchNameHandler}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        >
           My Hobbies: Racing
         </Person>
-        <Person name="Stephanie" age="26" />
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
       </div>
     )
   }
