@@ -9,13 +9,22 @@ class App extends Component {
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
       { name: "Stephanie", age: 26 }
-    ]
+    ],
+    otherState: "some other value"
   }
 
   // this eventHandler is a "Method" of this clas component
   // es6 syntax
   switchNameHandler = () => {
-    console.log("Was Clicked")
+    // console.log("Was Clicked")
+    // DO NOT USE THIS: this.state.persons[0].name = "Maximilian"
+    this.setState({
+      persons: [
+        { name: "Maximilian", age: 28 },
+        { name: "Manu", age: 29 },
+        { name: "Stephanie", age: 27 }
+      ]
+    })
   }
 
   render() {
