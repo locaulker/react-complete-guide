@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
+import person from "./Person/Person"
 import Person from "./Person/Person"
 
 class App extends Component {
@@ -8,9 +9,10 @@ class App extends Component {
     persons: [
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
-      { name: "Stephanie", age: 26 },
+      { name: "Stephanie", age: 26 }
     ],
     otherState: "some other value",
+    showPersons: false
   }
 
   // this eventHandler is a "Method" of this clas component
@@ -22,8 +24,8 @@ class App extends Component {
       persons: [
         { name: "Maximilian", age: 28 },
         { name: "Manu", age: 29 },
-        { name: "Stephanie", age: 27 },
-      ],
+        { name: "Stephanie", age: 27 }
+      ]
     })
   }
 
@@ -32,8 +34,15 @@ class App extends Component {
       persons: [
         { name: "Maximilian", age: 28 },
         { name: event.target.value, age: 29 },
-        { name: "Stephanie", age: 27 },
-      ],
+        { name: "Stephanie", age: 27 }
+      ]
+    })
+  }
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons
+    this.setState({
+      showPersons: !doesShow
     })
   }
 
@@ -45,32 +54,42 @@ class App extends Component {
       padding: "8px",
       borderRadius: "5px",
       marginBottom: "20px",
-      cursor: "pointer",
+      cursor: "pointer"
+    }
+
+    let persons = null
+
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler}
+            changed={this.nameChangedHandler}
+          >
+            My Hobbies: Racing
+          </Person>
+          <Person
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          />
+        </div>
+      )
     }
 
     return (
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <button style={style} onClick={this.switchNameHandler}>
-          Switch Name
+        <button style={style} onClick={this.togglePersonsHandler}>
+          Toggle Persons
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.switchNameHandler}
-          changed={this.nameChangedHandler}
-        >
-          My Hobbies: Racing
-        </Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        {persons}
       </div>
     )
   }
