@@ -8,7 +8,11 @@ const person = (props) => {
         I'm a {props.name} and I am {props.age} years old!
       </p>
       <p>{props.children}</p>
+<<<<<<< Updated upstream
       <input type="text" onChange={props.changed} value={props.name} />
+=======
+      <input type="text" />
+>>>>>>> Stashed changes
     </div>
   )
 }
