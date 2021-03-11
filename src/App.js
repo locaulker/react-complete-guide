@@ -8,10 +8,10 @@ class App extends Component {
     persons: [
       { id: "asdf1", name: "Max", age: 28 },
       { id: "vasdf1", name: "Manu", age: 29 },
-      { id: "asdf11", name: "Stephanie", age: 26 }
+      { id: "asdf11", name: "Stephanie", age: 26 },
     ],
     otherState: "some other value",
-    showPersons: false
+    showPersons: false,
   }
 
   nameChangedHandler = (event, id) => {
@@ -20,7 +20,7 @@ class App extends Component {
     })
 
     const person = {
-      ...this.state.persons[personIndex]
+      ...this.state.persons[personIndex],
     }
 
     person.name = event.target.value
@@ -29,7 +29,7 @@ class App extends Component {
     persons[personIndex] = person
 
     this.setState({
-      persons: persons
+      persons: persons,
     })
   }
 
@@ -43,19 +43,20 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons
     this.setState({
-      showPersons: !doesShow
+      showPersons: !doesShow,
     })
   }
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
       borderRadius: "5px",
       marginBottom: "20px",
-      cursor: "pointer"
+      cursor: "pointer",
     }
 
     let persons = null
@@ -76,6 +77,8 @@ class App extends Component {
           })}
         </div>
       )
+
+      style.backgroundColor = "red"
     }
 
     return (
