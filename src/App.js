@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./App.css"
+import Radium, { StyleRoot } from "radium"
 import Person from "./Person/Person"
 
 class App extends Component {
@@ -8,10 +9,10 @@ class App extends Component {
     persons: [
       { id: "asdf1", name: "Max", age: 28 },
       { id: "vasdf1", name: "Manu", age: 29 },
-      { id: "asdf11", name: "Stephanie", age: 26 },
+      { id: "asdf11", name: "Stephanie", age: 26 }
     ],
     otherState: "some other value",
-    showPersons: false,
+    showPersons: false
   }
 
   nameChangedHandler = (event, id) => {
@@ -20,7 +21,7 @@ class App extends Component {
     })
 
     const person = {
-      ...this.state.persons[personIndex],
+      ...this.state.persons[personIndex]
     }
 
     person.name = event.target.value
@@ -29,7 +30,7 @@ class App extends Component {
     persons[personIndex] = person
 
     this.setState({
-      persons: persons,
+      persons: persons
     })
   }
 
@@ -43,7 +44,7 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons
     this.setState({
-      showPersons: !doesShow,
+      showPersons: !doesShow
     })
   }
 
@@ -57,6 +58,10 @@ class App extends Component {
       borderRadius: "5px",
       marginBottom: "20px",
       cursor: "pointer",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      }
     }
 
     let persons = null
@@ -79,19 +84,25 @@ class App extends Component {
       )
 
       style.backgroundColor = "red"
+      style[":hover"] = {
+        backgroundColor: "salmon",
+        color: "pink"
+      }
     }
 
     return (
-      <div className="App">
-        <h1>Hi, I'm a React App</h1>
-        <p>This is really working!</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
-          Toggle Persons
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I'm a React App</h1>
+          <p>This is really working!</p>
+          <button style={style} onClick={this.togglePersonsHandler}>
+            Toggle Persons
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     )
   }
 }
 
-export default App
+export default Radium(App)
