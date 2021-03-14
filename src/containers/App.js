@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import styled from "styled-components"
-import "./App.css"
-import Person from "./Person/Person"
+import classes from "./App.css"
+import Person from "../components/Persons/Person/Person"
 
 const StyledButton = styled.button`
   background-color: green;
@@ -40,7 +40,7 @@ class App extends Component {
       ...this.state.persons[personIndex],
     }
 
-    person.name = event.input.value
+    person.name = event.target.value
 
     const persons = [...this.state.persons]
     persons[personIndex] = person
