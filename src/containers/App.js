@@ -25,19 +25,19 @@ class App extends Component {
     persons: [
       { id: "asdf1", name: "Max", age: 28 },
       { id: "vasdf1", name: "Manu", age: 29 },
-      { id: "asdf11", name: "Stephanie", age: 26 },
+      { id: "asdf11", name: "Stephanie", age: 26 }
     ],
     otherState: "some other value",
-    showPersons: false,
+    showPersons: false
   }
 
   nameChangedHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => {
-      return p.id === id
+      return p.userId === id
     })
 
     const person = {
-      ...this.state.persons[personIndex],
+      ...this.state.persons[personIndex]
     }
 
     person.name = event.target.value
@@ -46,7 +46,7 @@ class App extends Component {
     persons[personIndex] = person
 
     this.setState({
-      persons: persons,
+      persons: persons
     })
   }
 
@@ -60,7 +60,7 @@ class App extends Component {
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons
     this.setState({
-      showPersons: !doesShow,
+      showPersons: !doesShow
     })
   }
 
@@ -89,7 +89,7 @@ class App extends Component {
       style.backgroundColor = "red"
       style[":hover"] = {
         backgroundColor: "salmon",
-        color: "pink",
+        color: "pink"
       }
     }
 
